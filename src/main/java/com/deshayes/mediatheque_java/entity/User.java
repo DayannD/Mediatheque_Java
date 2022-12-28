@@ -2,20 +2,21 @@ package com.deshayes.mediatheque_java.entity;
 
 import com.deshayes.mediatheque_java.enums.Roles;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
+import lombok.*;
 
 import java.time.Instant;
 import java.util.List;
+import java.util.UUID;
 
-@Entity
+@Entity @Getter @Setter @AllArgsConstructor @NoArgsConstructor @Builder
 @Table(name = "Utilisateur")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    @NotNull
+    private UUID id;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,6 +40,7 @@ public class User {
     private Instant dateDeNaissance;
 
     @Column(name = "motdepasse")
+    @Min(4) @Max(12)
     private String motDePasse;
 
     @Embedded

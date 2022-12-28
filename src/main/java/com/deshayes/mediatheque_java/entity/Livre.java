@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.util.Date;
+import java.util.UUID;
 
 @Entity @Getter @Setter @AllArgsConstructor @NoArgsConstructor @Builder
 public class Livre {
@@ -13,7 +14,7 @@ public class Livre {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     @NotNull
-    private Long id;
+    private UUID id;
 
     @Column(name = "Title",length = 255)
     @NotBlank @NotNull
